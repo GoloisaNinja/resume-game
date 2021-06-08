@@ -525,9 +525,12 @@ function App() {
 				</div>
 
 				<div className='adventureText'>
-					<p className='textNode'>
-						{decision !== '' && decision} {textNode?.text}
-					</p>
+					{decision !== '' && (
+						<p>
+							<span className='white-span'>{decision}</span>
+						</p>
+					)}
+					<p>{textNode?.text}</p>
 				</div>
 				<div className='error'>
 					<p>{selectionError && 'Please make a valid selection'}</p>
