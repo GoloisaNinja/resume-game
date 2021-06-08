@@ -143,7 +143,7 @@ function App() {
 			is never going to get solved...`,
 			options: [
 				{
-					text: `You are arrested and disgraced - Game Over - type "restart" to try again`,
+					text: `You are arrested and disgraced. GAME OVER - type "restart" to try again`,
 					nextText: -1,
 					requires: null,
 				},
@@ -313,7 +313,7 @@ function App() {
 			"raspi_12617" when several armed police officers burst through chamber door.`,
 			options: [
 				{
-					text: `Good luck explaining this to the judge - type "restart" to try again`,
+					text: `Good luck explaining this to the judge. GAME OVER - type "restart" to try again`,
 					nextText: -1,
 					requires: null,
 				},
@@ -366,7 +366,7 @@ function App() {
 			know them all too well." The last thing you see is dark hood being put over your head.`,
 			options: [
 				{
-					text: `Never break the house rules, it's a rule - type "restart" to try again`,
+					text: `Never break the house rules, it's a rule. GAME OVER - type "restart" to try again`,
 					nextText: -1,
 					requires: null,
 				},
@@ -394,7 +394,7 @@ function App() {
 			Jonathan Collins must be tied up with Millie somehow - why didn't you see it sooner?`,
 			options: [
 				{
-					text: `You don't need to be thrown into the Lion's den, you walked yourself right in - type "restart" to try again`,
+					text: `You don't need to be thrown into the Lion's den, you walked yourself right in. GAME OVER - type "restart" to try again`,
 					nextText: -1,
 					requires: null,
 				},
@@ -407,7 +407,7 @@ function App() {
 			cold. You wonder if it'll ever stop raining. And then. It does.`,
 			options: [
 				{
-					text: `You didn't actually expect that to work did you? - type "restart" to try again`,
+					text: `You didn't actually expect that to work did you? GAME OVER - type "restart" to try again`,
 					nextText: -1,
 					requires: null,
 				},
@@ -428,7 +428,7 @@ function App() {
 			than when you started - but you know, there's even more left to uncover...`,
 			options: [
 				{
-					text: `End credit music and sweet bloopers scenes, you did it! - type "restart" to try again`,
+					text: `End credit music and sweet bloopers scenes, BEST ENDING ACHIEVED! - type "restart" to try again`,
 					nextText: -1,
 					requires: null,
 				},
@@ -437,7 +437,7 @@ function App() {
 	];
 	const handleChoice = (e) => {
 		e.preventDefault();
-		if (e.target.playerChoice.value === 'restart') {
+		if (e.target.playerChoice.value.toLowerCase().trim() === 'restart') {
 			e.target.playerChoice.value = '';
 			return startAdventureGame();
 		}
