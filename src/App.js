@@ -14,6 +14,7 @@ function App() {
 		setResponses,
 		setDecision,
 		clearGameData,
+		clearResponses,
 	} = useContext(levelContext);
 	const [theNode, setTheNode] = useState();
 	const textNodes = [
@@ -468,6 +469,7 @@ function App() {
 			return shouldShow;
 		};
 		const showTextNode = (textNodeIndex) => {
+			clearResponses();
 			const currentNode = textNodes.find((node) => node.id === textNodeIndex);
 
 			setLevelNode(currentNode);

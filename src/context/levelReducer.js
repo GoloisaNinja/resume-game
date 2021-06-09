@@ -3,6 +3,7 @@ import {
 	SET_LEVEL_NODE,
 	SET_LEVEL_INVENTORY,
 	SET_RESPONSES,
+	CLEAR_RESPONSES,
 	SET_DECISION,
 	CLEAR_GAME_DATA,
 } from './levelActions';
@@ -29,6 +30,11 @@ const levelReducer = (state, action) => {
 			return {
 				...state,
 				responses: payload,
+			};
+		case CLEAR_RESPONSES:
+			return {
+				...state,
+				responses: [],
 			};
 		case SET_DECISION:
 			return {

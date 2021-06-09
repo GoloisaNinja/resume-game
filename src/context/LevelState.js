@@ -6,6 +6,7 @@ import {
 	SET_LEVEL_NODE,
 	SET_LEVEL_INVENTORY,
 	SET_RESPONSES,
+	CLEAR_RESPONSES,
 	SET_DECISION,
 	CLEAR_GAME_DATA,
 } from './levelActions';
@@ -51,6 +52,12 @@ const LevelState = ({ children }) => {
 			payload: responses,
 		});
 	};
+	// Clear Level Responses
+	const clearResponses = () => {
+		dispatch({
+			type: CLEAR_RESPONSES,
+		});
+	};
 	// Set Level Decision
 	const setDecision = (decision) => {
 		dispatch({
@@ -77,6 +84,7 @@ const LevelState = ({ children }) => {
 				setResponses,
 				setDecision,
 				clearGameData,
+				clearResponses,
 			}}>
 			{children}
 		</LevelContext.Provider>
