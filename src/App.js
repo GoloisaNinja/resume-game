@@ -493,6 +493,8 @@ function App() {
 				<img
 					className='header-logo'
 					src='/assets/jcodesGameSm.png'
+					width='100'
+					height='100'
 					alt='jcodes logo'
 				/>
 				{/* Maybe for an about link? <div></div> */}
@@ -505,15 +507,17 @@ function App() {
 						</div>
 					</section>
 					<main className='main'>
-						<div className='levelDetails'>
-							<p>Mood: {mood}</p>
-							<p>Inventory: </p>
-							{inventory.length > 0 ? (
-								inventory.map((item, index) => <p key={index}>{item}</p>)
-							) : (
-								<p>empty</p>
-							)}
-						</div>
+						{!!mood && (
+							<div className='levelDetails'>
+								<p>Mood: {mood}</p>
+								<p>Inventory: </p>
+								{inventory.length > 0 ? (
+									inventory.map((item, index) => <p key={index}>{item}</p>)
+								) : (
+									<p>empty</p>
+								)}
+							</div>
+						)}
 
 						<div className='adventureText'>
 							{decision !== '' && (
@@ -523,10 +527,9 @@ function App() {
 							)}
 							<p>{textNode?.text}</p>
 						</div>
-
-						<div className='adventureResponse'>
-							{responses.length > 0 &&
-								responses.map((option, index) => {
+						{responses.length > 0 && (
+							<div className='adventureResponse'>
+								{responses.map((option, index) => {
 									return (
 										<button
 											key={index}
@@ -538,7 +541,8 @@ function App() {
 										</button>
 									);
 								})}
-						</div>
+							</div>
+						)}
 					</main>
 				</>
 			)}

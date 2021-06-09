@@ -29,6 +29,7 @@ body {
   padding: 1rem; }
   .header > img {
     width: 100px;
+    height: auto;
     margin-left: 2rem; }
   .header > div {
     margin-right: 2rem;
