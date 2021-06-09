@@ -89,11 +89,14 @@ body {
 .adventureResponse {
 	color: #ebebeb;
 	padding: 2rem;
-	min-height: 275px;
 	> .btn:not(:last-child) {
 		margin-bottom: 3rem;
 	}
+	> p {
+		margin-bottom: 2rem;
+	}
 }
+
 .btn {
 	font-family: 'Press Start 2P', cursive;
 	font-size: 1.4rem;

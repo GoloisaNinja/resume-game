@@ -498,7 +498,7 @@ function App() {
 				/>
 				{/* Maybe for an about link? <div></div> */}
 			</header>
-			{textNode !== null && (
+			{textNode !== null && responses.length > 0 && (
 				<>
 					<section>
 						<div className='hero'>
@@ -517,17 +517,15 @@ function App() {
 								)}
 							</div>
 						)}
-
 						<div className='adventureText' id='text'>
 							{decision !== '' && (
-								<p>
-									<span className='white-span'>{decision}</span>
-								</p>
+								<span className='white-span'>{decision}</span>
 							)}
 							<p>{textNode?.text}</p>
 						</div>
 						{responses.length > 0 && (
 							<div className='adventureResponse'>
+								<p className='direction'>Make your choice</p>
 								{responses.map((option, index) => {
 									return (
 										<button
