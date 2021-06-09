@@ -444,7 +444,6 @@ function App() {
 		}
 		setDecision(option.text);
 		setTheNode(option.nextText);
-		window.scroll(0, 200);
 	};
 
 	const startAdventureGame = () => {
