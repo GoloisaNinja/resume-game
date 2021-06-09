@@ -6,10 +6,8 @@ function App() {
 		textNode,
 		mood,
 		inventory,
-		choices,
 		responses,
 		decision,
-		setChoices,
 		setLevelMood,
 		setLevelInventory,
 		setLevelNode,
@@ -17,7 +15,6 @@ function App() {
 		setDecision,
 		clearGameData,
 	} = useContext(levelContext);
-	const [selectionError, setSelectionError] = useState(false);
 	const [theNode, setTheNode] = useState();
 	const textNodes = [
 		{
@@ -67,7 +64,7 @@ function App() {
 					requires: { mood: 'tense' },
 				},
 				{
-					text: `What is this? Why is there blood on this? What happened to your face?`,
+					text: `What is this? Why is there blood on this and what happened to your face?`,
 					inventory: 'File',
 					nextText: 4,
 					requires: { mood: 'calm' },
@@ -143,7 +140,7 @@ function App() {
 			is never going to get solved...`,
 			options: [
 				{
-					text: `You are arrested and disgraced. GAME OVER - type "restart" to try again`,
+					text: `You are arrested and disgraced. GAME OVER`,
 					nextText: -1,
 					requires: null,
 				},
@@ -313,7 +310,7 @@ function App() {
 			"raspi_12617" when several armed police officers burst through chamber door.`,
 			options: [
 				{
-					text: `Good luck explaining this to the judge. GAME OVER - type "restart" to try again`,
+					text: `Good luck explaining this to the judge. GAME OVER`,
 					nextText: -1,
 					requires: null,
 				},
@@ -366,7 +363,7 @@ function App() {
 			know them all too well." The last thing you see is dark hood being put over your head.`,
 			options: [
 				{
-					text: `Never break the house rules, it's a rule. GAME OVER - type "restart" to try again`,
+					text: `Never break the house rules, it's a rule. GAME OVER`,
 					nextText: -1,
 					requires: null,
 				},
@@ -394,7 +391,7 @@ function App() {
 			Jonathan Collins must be tied up with Millie somehow - why didn't you see it sooner?`,
 			options: [
 				{
-					text: `You don't need to be thrown into the Lion's den, you walked yourself right in. GAME OVER - type "restart" to try again`,
+					text: `You don't need to be thrown into the Lion's den, you walked yourself right in. GAME OVER`,
 					nextText: -1,
 					requires: null,
 				},
@@ -407,7 +404,7 @@ function App() {
 			cold. You wonder if it'll ever stop raining. And then. It does.`,
 			options: [
 				{
-					text: `You didn't actually expect that to work did you? GAME OVER - type "restart" to try again`,
+					text: `You didn't actually expect that to work did you? GAME OVER`,
 					nextText: -1,
 					requires: null,
 				},
@@ -428,41 +425,26 @@ function App() {
 			than when you started - but you know, there's even more left to uncover...`,
 			options: [
 				{
-					text: `End credit music and sweet bloopers scenes, BEST ENDING ACHIEVED! - type "restart" to try again`,
+					text: `You survived to learn more! BEST ENDING ACHIEVED!`,
 					nextText: -1,
 					requires: null,
 				},
 			],
 		},
 	];
-	const handleChoice = (e) => {
-		e.preventDefault();
-		if (e.target.playerChoice.value.toLowerCase().trim() === 'restart') {
-			e.target.playerChoice.value = '';
+	const handleChoice = (option) => {
+		if (option.nextText === -1) {
 			return startAdventureGame();
 		}
-		const levelSelect = parseInt(e.target.playerChoice.value);
-
-		let match = [];
-		match = choices.filter((choice) => choice === levelSelect);
-		if (match.length > 0) {
-			if (!!textNode.options[levelSelect - 1].mood) {
-				setLevelMood(textNode.options[levelSelect - 1].mood);
-			}
-			if (!!textNode.options[levelSelect - 1].inventory) {
-				setLevelInventory(textNode.options[levelSelect - 1].inventory);
-			}
-			setDecision(textNode.options[levelSelect - 1].text);
-			setTheNode(textNode.options[levelSelect - 1].nextText);
-			window.scroll(0, 200);
-			e.target.playerChoice.value = '';
-		} else {
-			setSelectionError(true);
-			e.target.playerChoice.value = '';
-			setTimeout(() => {
-				setSelectionError(false);
-			}, 2000);
+		if (!!option.mood) {
+			setLevelMood(option.mood);
 		}
+		if (!!option.inventory) {
+			setLevelInventory(option.inventory);
+		}
+		setDecision(option.text);
+		setTheNode(option.nextText);
+		window.scroll(0, 200);
 	};
 
 	const startAdventureGame = () => {
@@ -490,15 +472,14 @@ function App() {
 			const currentNode = textNodes.find((node) => node.id === textNodeIndex);
 
 			setLevelNode(currentNode);
-			let choiceArr = [];
+
 			let availableResponses = [];
-			currentNode?.options.forEach((option, index) => {
+			currentNode?.options.forEach((option) => {
 				if (showOption(option)) {
-					choiceArr.push(index + 1);
-					availableResponses.push(option.text);
+					availableResponses.push(option);
 				}
 			});
-			setChoices(choiceArr);
+
 			setResponses(availableResponses);
 		};
 		showTextNode(theNode);
@@ -509,10 +490,18 @@ function App() {
 	return (
 		<div className='App'>
 			<header className='header'>
-				<div>
+				<img
+					className='header-logo'
+					src='/assets/jcodesGameSm.png'
+					alt='jcodes logo'
+				/>
+				{/* Maybe for an about link? <div></div> */}
+			</header>
+			<section>
+				<div className='hero'>
 					<h1>Resume Noir</h1>
 				</div>
-			</header>
+			</section>
 			<main className='main'>
 				<div className='levelDetails'>
 					<p>Mood: {mood}</p>
@@ -532,24 +521,21 @@ function App() {
 					)}
 					<p>{textNode?.text}</p>
 				</div>
-				<div className='error'>
-					<p>{selectionError && 'Please make a valid selection'}</p>
-				</div>
+
 				<div className='adventureResponse'>
 					{responses.length > 0 &&
 						responses.map((option, index) => {
 							return (
-								<p key={index}>
-									<span className='green-span'>{choices[index]}.</span> {option}
-								</p>
+								<button
+									key={index}
+									name='playerChoice'
+									className='btn adentureChoice'
+									value={index}
+									onClick={(e) => handleChoice(option)}>
+									{option.text}
+								</button>
 							);
 						})}
-					<div className='adventureChoice'>
-						<form onSubmit={(e) => handleChoice(e)}>
-							<label>Enter choice number:</label>
-							<input name='playerChoice'></input>
-						</form>
-					</div>
 				</div>
 			</main>
 		</div>

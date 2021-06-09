@@ -1,44 +1,58 @@
-html {
-	margin: 0;
+* {
 	padding: 0;
+	margin: 0;
 	box-sizing: border-box;
+}
+html {
+	font-size: 62.5%;
+	-webkit-text-size-adjust: 100%;
 	text-size-adjust: 100%;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: top;
-	background-image: url('/assets/oldScreen.png');
-	min-height: 100vh;
-	min-width: 100vw;
-	background-color: #184209;
 }
 
 body {
-	margin: 0;
-	font-size: 62.5%;
+	font-size: 1.6rem;
 	font-family: 'Press Start 2P', cursive;
 	color: #ebebeb;
-	line-height: 1.2rem;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: top;
+	background-color: #184209;
+	background-image: url('/assets/oldScreen.png');
+	min-height: 100vh;
+	line-height: 1.6;
 	letter-spacing: 0.1rem;
 }
 .header {
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	width: 100%;
-	line-height: 4rem;
-
-	h1 {
-		font-size: 3rem;
-		text-shadow: 2px 2px 4px #030303;
-		text-align: center;
+	padding: 1rem;
+	> img {
+		width: 100px;
+		margin-left: 2rem;
+	}
+	> div {
+		margin-right: 2rem;
+		text-shadow: 4px 4px 4px #030303;
+		color: #ebebeb;
 	}
 }
 .main {
-	font-size: 0.85rem;
+	font-size: 1.3rem;
 	text-shadow: 2px 2px 2px #030303;
 	margin: 0 auto;
-	max-width: 40rem;
-	padding: 1rem 1.11rem 1rem 1rem;
+	max-width: 75rem;
+	padding: 1.5rem;
+}
+.hero {
+	font-size: 3rem;
+	color: #969696;
+	width: 100%;
+	text-align: center;
+	> h1 {
+		text-shadow: 4px 4px 4px #030303;
+	}
 }
 .levelDetails {
 	display: flex;
@@ -46,18 +60,14 @@ body {
 	justify-content: center;
 	background-color: #030303;
 	align-items: center;
-	padding: 0.65rem;
-	border: 3px solid #ccc;
+	padding: 2rem;
+	border: 3px solid #e8e8e8;
 	border-radius: 8px;
-	font-size: 1.2rem;
+	font-size: 2rem;
 	margin: 0 auto;
-	margin-bottom: 1.5rem;
+	margin-bottom: 3rem;
 	box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
 		rgba(0, 0, 0, 0.22) 0px 15px 12px;
-}
-.error {
-	font-size: 1.4rem;
-	text-align: center;
 }
 .adventureText,
 .adventureResponse {
@@ -65,8 +75,8 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 2rem;
-	padding: 1.3rem;
+	margin-bottom: 3rem;
+	padding: 2rem;
 	color: #5afb10;
 	background-color: #030303;
 	border: 3px solid #ccc;
@@ -76,34 +86,23 @@ body {
 }
 .adventureResponse {
 	color: #ebebeb;
-}
-
-form {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	margin-top: 1rem;
-	> input {
-		width: 95%;
-		background: none;
-		border: none;
-		border: 3px solid #ebebeb;
-		border-radius: 3px;
-		font-size: 1.6rem;
-		color: #5afb10;
-		margin-top: 1rem;
-		text-align: center;
-		font-family: 'Press Start 2P', cursive;
-		padding: 0.5rem;
-		background: #666666;
+	padding: 2rem;
+	> .btn:not(:last-child) {
+		margin-bottom: 3rem;
 	}
 }
-.green-span {
-	color: #5afb10;
-	font-weight: bold;
+.btn {
+	font-family: 'Press Start 2P', cursive;
+	font-size: 1.4rem;
+	background: #969696;
+	border: none;
+	color: #030303;
+	border: 3px solid #ebebeb;
+	border-radius: 5px;
+	padding: 1rem;
+	cursor: pointer;
 }
+
 .white-span {
 	color: #ebebeb;
-	font-weight: bold;
 }

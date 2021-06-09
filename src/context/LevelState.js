@@ -2,7 +2,6 @@ import React, { useReducer } from 'react';
 import LevelContext from './levelContext';
 import levelReducer from './levelReducer';
 import {
-	SET_CHOICES,
 	SET_LEVEL_MOOD,
 	SET_LEVEL_NODE,
 	SET_LEVEL_INVENTORY,
@@ -16,7 +15,6 @@ const LevelState = ({ children }) => {
 		textNode: null,
 		mood: 'neutral',
 		inventory: [],
-		choices: [],
 		responses: [],
 		decision: '',
 	};
@@ -24,15 +22,6 @@ const LevelState = ({ children }) => {
 	const [state, dispatch] = useReducer(levelReducer, initialState);
 
 	// Level Functions
-
-	// Set Choices
-
-	const setChoices = (choiceArr) => {
-		dispatch({
-			type: SET_CHOICES,
-			payload: choiceArr,
-		});
-	};
 
 	// Set Level Mood
 	const setLevelMood = (details) => {
@@ -80,10 +69,8 @@ const LevelState = ({ children }) => {
 				textNode: state.textNode,
 				mood: state.mood,
 				inventory: state.inventory,
-				choices: state.choices,
 				responses: state.responses,
 				decision: state.decision,
-				setChoices,
 				setLevelMood,
 				setLevelNode,
 				setLevelInventory,

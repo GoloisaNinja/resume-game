@@ -1,5 +1,4 @@
 import {
-	SET_CHOICES,
 	SET_LEVEL_MOOD,
 	SET_LEVEL_NODE,
 	SET_LEVEL_INVENTORY,
@@ -11,11 +10,6 @@ import {
 const levelReducer = (state, action) => {
 	const { type, payload } = action;
 	switch (type) {
-		case SET_CHOICES:
-			return {
-				...state,
-				choices: payload,
-			};
 		case SET_LEVEL_MOOD:
 			return {
 				...state,
