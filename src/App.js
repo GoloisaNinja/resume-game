@@ -64,13 +64,13 @@ function App() {
 					requires: { mood: 'tense' },
 				},
 				{
-					text: `What is this? Why is there blood on this and what happened to your face?`,
+					text: `Finally, some hard evidence! Should I be worried about your face?`,
 					inventory: 'File',
 					nextText: 4,
 					requires: { mood: 'calm' },
 				},
 				{
-					text: `Why don't you just tell me what happened slimeball.`,
+					text: `I'll take the file, but why don't you just give me the short version slimeball.`,
 					inventory: 'File',
 					nextText: 4,
 					mood: 'neutral',
@@ -103,12 +103,12 @@ function App() {
 		},
 		{
 			id: 4,
-			text: `You take the file, but before you can start to look through it, your informant starts talking to you 
-			in hushed tones.  "Look, it wasn't easy getting that file.  I had to go to Eddie's on fourth.  You know the place.  
+			text: `Your informant starts talking to you 
+			in hushed tones.  "I had to go to Eddie's on fourth.  You know the place.  
 			Eddie and his guys tuned me up pretty good just for asking about that name you're so hot and bothered about.  He and 
 			his guys got some call and took off.  If one of Eddie's girls hadn't come along, I'd still
 			be zip-tied to a support beam.  Anyway, before I left Eddie's shop, I took a peek in his files, the ones he keeps 
-			in his office.  That's when I found that." He points to the file in your hand.  "But that's not all I found."  
+			in his office. I thought I'd just find some files, turns out Eddie had more than just files."  
 			Your informant starts reaching into his raincoat again.
 			You hear the sound of breaking glass first.  Then your informant slumps over in the booth.  Then the shrill screams 
 			of the waitress ring out.  The last noise you hear before the crummy little diner goes as silent as a tomb, is the sound of screeching tires, and 
@@ -497,47 +497,51 @@ function App() {
 				/>
 				{/* Maybe for an about link? <div></div> */}
 			</header>
-			<section>
-				<div className='hero'>
-					<h1>Resume Noir</h1>
-				</div>
-			</section>
-			<main className='main'>
-				<div className='levelDetails'>
-					<p>Mood: {mood}</p>
-					<p>Inventory: </p>
-					{inventory.length > 0 ? (
-						inventory.map((item, index) => <p key={index}>{item}</p>)
-					) : (
-						<p>empty</p>
-					)}
-				</div>
+			{textNode !== null && (
+				<>
+					<section>
+						<div className='hero'>
+							<h1>Resume Noir</h1>
+						</div>
+					</section>
+					<main className='main'>
+						<div className='levelDetails'>
+							<p>Mood: {mood}</p>
+							<p>Inventory: </p>
+							{inventory.length > 0 ? (
+								inventory.map((item, index) => <p key={index}>{item}</p>)
+							) : (
+								<p>empty</p>
+							)}
+						</div>
 
-				<div className='adventureText'>
-					{decision !== '' && (
-						<p>
-							<span className='white-span'>{decision}</span>
-						</p>
-					)}
-					<p>{textNode?.text}</p>
-				</div>
+						<div className='adventureText'>
+							{decision !== '' && (
+								<p>
+									<span className='white-span'>{decision}</span>
+								</p>
+							)}
+							<p>{textNode?.text}</p>
+						</div>
 
-				<div className='adventureResponse'>
-					{responses.length > 0 &&
-						responses.map((option, index) => {
-							return (
-								<button
-									key={index}
-									name='playerChoice'
-									className='btn adentureChoice'
-									value={index}
-									onClick={(e) => handleChoice(option)}>
-									{option.text}
-								</button>
-							);
-						})}
-				</div>
-			</main>
+						<div className='adventureResponse'>
+							{responses.length > 0 &&
+								responses.map((option, index) => {
+									return (
+										<button
+											key={index}
+											name='playerChoice'
+											className='btn adentureChoice'
+											value={index}
+											onClick={(e) => handleChoice(option)}>
+											{option.text}
+										</button>
+									);
+								})}
+						</div>
+					</main>
+				</>
+			)}
 		</div>
 	);
 }
