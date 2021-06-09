@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useLayoutEffect, useState, useEffect } from 'react';
 import levelContext from './context/levelContext';
 
 function App() {
@@ -451,7 +451,7 @@ function App() {
 		clearGameData();
 		setTheNode(1);
 	};
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const showOption = (option) => {
 			let shouldShow = false;
 			if (option.requires === null) {
@@ -485,7 +485,7 @@ function App() {
 		};
 		showTextNode(theNode);
 	}, [theNode]);
-	useEffect(() => {
+	useLayoutEffect(() => {
 		startAdventureGame();
 	}, []);
 	return (
