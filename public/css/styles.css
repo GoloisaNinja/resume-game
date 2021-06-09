@@ -19,7 +19,8 @@ body {
   background-image: url("/assets/oldScreen.png");
   min-height: 100vh;
   line-height: 1.6;
-  letter-spacing: 0.1rem; }
+  letter-spacing: 0.1rem;
+  scroll-behavior: smooth; }
 
 .header {
   display: flex;
@@ -81,7 +82,8 @@ body {
 
 .adventureResponse {
   color: #ebebeb;
-  padding: 2rem; }
+  padding: 2rem;
+  min-height: 275px; }
   .adventureResponse > .btn:not(:last-child) {
     margin-bottom: 3rem; }
 

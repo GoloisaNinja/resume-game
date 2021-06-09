@@ -21,6 +21,7 @@ body {
 	min-height: 100vh;
 	line-height: 1.6;
 	letter-spacing: 0.1rem;
+	scroll-behavior: smooth;
 }
 .header {
 	display: flex;
@@ -88,6 +89,7 @@ body {
 .adventureResponse {
 	color: #ebebeb;
 	padding: 2rem;
+	min-height: 275px;
 	> .btn:not(:last-child) {
 		margin-bottom: 3rem;
 	}

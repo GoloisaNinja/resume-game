@@ -518,7 +518,7 @@ function App() {
 							</div>
 						)}
 
-						<div className='adventureText'>
+						<div className='adventureText' id='text'>
 							{decision !== '' && (
 								<p>
 									<span className='white-span'>{decision}</span>
