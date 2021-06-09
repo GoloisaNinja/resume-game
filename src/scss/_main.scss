@@ -30,8 +30,8 @@ body {
 	width: 100%;
 	padding: 1rem;
 	> a {
-		margin-top: 1rem;
-		margin-left: 2rem;
+		margin-top: 0.25rem;
+		margin-left: 0.25rem;
 	}
 	> img {
 		width: 100px;
@@ -42,6 +42,10 @@ body {
 		margin-right: 2rem;
 		text-shadow: 4px 4px 4px #030303;
 		color: #ebebeb;
+		> a {
+			text-decoration: none;
+			color: #b5b5b5;
+		}
 	}
 }
 .main {

@@ -29,8 +29,8 @@ body {
   width: 100%;
   padding: 1rem; }
   .header > a {
-    margin-top: 1rem;
-    margin-left: 2rem; }
+    margin-top: 0.25rem;
+    margin-left: 0.25rem; }
   .header > img {
     width: 100px;
     height: auto; }
@@ -38,6 +38,9 @@ body {
     margin-right: 2rem;
     text-shadow: 4px 4px 4px #030303;
     color: #ebebeb; }
+    .header > div > a {
+      text-decoration: none;
+      color: #b5b5b5; }
 
 .main {
   font-size: 1.3rem;

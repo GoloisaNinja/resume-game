@@ -500,7 +500,9 @@ function App() {
 						alt='jcodes logo'
 					/>
 				</a>
-				{/* Maybe for an about link? <div></div> */}
+				<div>
+					<a href='https://jcodes.blog'>blog</a>
+				</div>
 			</header>
 			{textNode !== null && responses.length > 0 ? (
 				<>
