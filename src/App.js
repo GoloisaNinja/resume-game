@@ -491,13 +491,15 @@ function App() {
 	return (
 		<div className='App'>
 			<header className='header'>
-				<img
-					className='header-logo'
-					src='/assets/jcodesGameSm.png'
-					width='100'
-					height='100'
-					alt='jcodes logo'
-				/>
+				<a href='https://jcodes.page'>
+					<img
+						className='header-logo'
+						src='/assets/jcodesGameSm.png'
+						width='100'
+						height='100'
+						alt='jcodes logo'
+					/>
+				</a>
 				{/* Maybe for an about link? <div></div> */}
 			</header>
 			{textNode !== null && responses.length > 0 ? (

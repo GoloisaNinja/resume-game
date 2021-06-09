@@ -29,10 +29,14 @@ body {
 	align-items: center;
 	width: 100%;
 	padding: 1rem;
+	> a {
+		margin-top: 1rem;
+		margin-left: 2rem;
+	}
 	> img {
 		width: 100px;
 		height: auto;
-		margin-left: 2rem;
+		//margin-left: 2rem;
 	}
 	> div {
 		margin-right: 2rem;

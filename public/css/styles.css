@@ -28,10 +28,12 @@ body {
   align-items: center;
   width: 100%;
   padding: 1rem; }
+  .header > a {
+    margin-top: 1rem;
+    margin-left: 2rem; }
   .header > img {
     width: 100px;
-    height: auto;
-    margin-left: 2rem; }
+    height: auto; }
   .header > div {
     margin-right: 2rem;
     text-shadow: 4px 4px 4px #030303;
