@@ -498,7 +498,7 @@ function App() {
 				/>
 				{/* Maybe for an about link? <div></div> */}
 			</header>
-			{textNode !== null && responses.length > 0 && (
+			{textNode !== null && responses.length > 0 ? (
 				<>
 					<section>
 						<div className='hero'>
@@ -511,7 +511,7 @@ function App() {
 								<p>Mood: {mood}</p>
 								<p>Inventory: </p>
 								{inventory.length > 0 ? (
-									inventory.map((item, index) => <p key={index}>{item}</p>)
+									inventory.map((item) => <p key={Math.random()}>{item}</p>)
 								) : (
 									<p>empty</p>
 								)}
@@ -521,27 +521,34 @@ function App() {
 							{decision !== '' && (
 								<span className='white-span'>{decision}</span>
 							)}
-							<p>{textNode?.text}</p>
+							<p>{textNode.text}</p>
 						</div>
-						{responses.length > 0 && (
-							<div className='adventureResponse'>
-								<p className='direction'>Make your choice</p>
-								{responses.map((option, index) => {
+						<div className='adventureResponse'>
+							<p className='direction'>Make your choice</p>
+							{responses.length > 0 &&
+								responses.map((option, index) => {
 									return (
 										<button
-											key={index}
-											name='playerChoice'
+											key={Math.random()}
 											className='btn adentureChoice'
-											value={index}
 											onClick={(e) => handleChoice(option)}>
 											{option.text}
 										</button>
 									);
 								})}
-							</div>
-						)}
+						</div>
 					</main>
 				</>
+			) : (
+				<div
+					style={{
+						minHeight: '100vh',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+					}}>
+					...
+				</div>
 			)}
 		</div>
 	);
