@@ -440,7 +440,7 @@ function App() {
 		if (!!option.mood) {
 			setLevelMood(option.mood);
 		}
-		if (!!option.inventory) {
+		if (!!option.inventory && !inventory.includes(option.inventory)) {
 			setLevelInventory(option.inventory);
 		}
 		setDecision(option.text);
@@ -510,7 +510,11 @@ function App() {
 					<main className='main'>
 						{!!mood && (
 							<div className='levelDetails'>
-								<p>Mood: {mood}</p>
+								<div>
+									<p>Mood: </p>
+									<p>{mood}</p>
+								</div>
+
 								<p>Inventory: </p>
 								{inventory.length > 0 ? (
 									inventory.map((item) => <p key={Math.random()}>{item}</p>)
