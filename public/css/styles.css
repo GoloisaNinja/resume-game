@@ -56,6 +56,8 @@ body {
   text-align: center; }
   .hero > h1 {
     text-shadow: 4px 4px 4px #030303; }
+  .hero .subtext {
+    color: #969696; }
 
 .levelDetails {
   display: flex;

@@ -276,7 +276,7 @@ function App() {
 			come here. Knew you couldn't let it go."  No one moves. You can barely breathe. "They told me you were like 
 			a dog with a bone, told me you don't let cases go. You're here about Jonthan Collins right?  You're here to find 
 			out why his name keeps popping up in your cases.  That piece of paper - the one that you are going to die over, it 
-			says that Jonathan Collins worked for a company called Maines Paper and Food.  Worked there between 2014 and 2016 
+			says that Jonathan Collins worked for a company called Maines Paper and Food.  Worked there between 2014 and 2020 
 			as a data specialist and programmer.  He built a truck tracker with integrated emails using a complex Verizon GPS API. He also built and deployed 
 			an integrated dashboard for account specialists that created an automated workflow process." You think about 
 			telling Eddie that you CAN let this go - that it doesn't really matter. This Jonathan Collins sounds like a normal guy. 
@@ -509,6 +509,7 @@ function App() {
 					<section>
 						<div className='hero'>
 							<h1>Resume Noir</h1>
+							<h6 className='subtext'>text adventure</h6>
 						</div>
 					</section>
 					<main className='main'>
