@@ -1,5 +1,6 @@
 import React, { useContext, useLayoutEffect, useState, useEffect } from 'react';
 import levelContext from './context/levelContext';
+import { elementScrollIntoView } from 'seamless-scroll-polyfill';
 
 function App() {
 	const {
@@ -445,6 +446,9 @@ function App() {
 		}
 		setDecision(option.text);
 		setTheNode(option.nextText);
+		elementScrollIntoView(document.getElementById('scrollTarget'), {
+			behavior: 'smooth',
+		});
 	};
 
 	const startAdventureGame = () => {
@@ -514,7 +518,7 @@ function App() {
 					</section>
 					<main className='main'>
 						{!!mood && (
-							<div className='levelDetails'>
+							<div className='levelDetails' id='scrollTarget'>
 								<div>
 									<p>Mood: </p>
 									<p>{mood}</p>
