@@ -117,3 +117,71 @@ body {
 
 .white-span {
   color: #ebebeb; }
+
+.modalStyle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  max-width: 90%;
+  z-index: 1010;
+  background-color: #969696;
+  color: #030303;
+  padding: 1.5rem;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  text-align: center; }
+
+.modalOverlay {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0a0a0a;
+  opacity: 90%; }
+
+.modalButton1, .modalButton2, .modalDismissButton1 {
+  background-color: #ff0a0a;
+  color: #eee;
+  padding: 1rem;
+  border: none;
+  border-radius: 3px;
+  width: 95px;
+  max-width: 100%;
+  border-bottom: 2px solid #d60000;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out; }
+  .modalButton1:hover, .modalButton2:hover, .modalDismissButton1:hover {
+    background-color: #ff7070;
+    border-bottom: 2px solid #ff0a0a; }
+
+.modalButton2 {
+  background-color: #0f9d58;
+  border-bottom: 2px solid #0a6e3d; }
+  .modalButton2:hover {
+    background-color: #13cc72;
+    border-bottom: 2px solid #0f9d58; }
+
+.modalDismissButton1 {
+  background-color: #0e1013;
+  border-bottom: #030404;
+  width: 100px; }
+  .modalDismissButton1:hover {
+    background-color: #39414e;
+    border-bottom: #0e1013; }
+
+.buttonDiv {
+  display: flex;
+  justify-content: space-evenly; }
+
+.modal-icon {
+  width: 80px;
+  height: 80px; }
