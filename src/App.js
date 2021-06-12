@@ -674,11 +674,11 @@ function App() {
 				<div>
 					<button className='soundToggle' onClick={toggleSound}>
 						{playing ? (
-							<FaVolumeUp size={'2rem'} />
+							<FaVolumeUp size={'2.4rem'} />
 						) : (
-							<FaVolumeMute size={'2rem'} />
+							<FaVolumeMute size={'2.4rem'} />
 						)}{' '}
-						music
+						sound
 					</button>
 				</div>
 			</header>
