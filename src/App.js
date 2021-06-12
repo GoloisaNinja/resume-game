@@ -21,6 +21,7 @@ function App() {
 	} = useContext(levelContext);
 	const [theNode, setTheNode] = useState();
 	const [show, setShow] = useState(true);
+	const [myAudio, setMyAudio] = useState();
 	const content = {
 		title: 'Play game audio',
 		body: 'Would you like game audio to play during your session?',
@@ -560,16 +561,34 @@ function App() {
 			],
 		},
 	];
-
+	useEffect(() => {
+		if (myAudio !== undefined) {
+			myAudio.play();
+			myAudio.loop = true;
+		}
+		console.log('music ran');
+	}, [myAudio]);
+	const startAudio = () => {
+		const url = soundFile;
+		setMyAudio(new Audio(url));
+	};
+	const stopAudio = () => {
+		if (myAudio !== undefined) {
+			myAudio.pause();
+		}
+	};
 	const handleClose = (decision) => {
 		setShow(false);
 		if (decision) {
-			const url = soundFile;
-			const audio = new Audio(url);
-			audio.play();
-			audio.loop = true;
+			startAudio();
 		}
 	};
+	const handleVisibilityChange = () => {
+		if (document.hidden) {
+			stopAudio();
+		}
+	};
+	document.addEventListener('visibilitychange', handleVisibilityChange, false);
 	const handleChoice = (option) => {
 		if (option.nextText === -1) {
 			return startAdventureGame();
