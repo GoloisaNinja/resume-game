@@ -42,9 +42,13 @@ body {
 		margin-right: 2rem;
 		text-shadow: 4px 4px 4px #030303;
 		color: #ebebeb;
-		> a {
-			text-decoration: none;
-			color: #b5b5b5;
+		> button {
+			border: none;
+			outline: none;
+			font-family: 'Press Start 2P', cursive;
+			background: none;
+			color: #969696;
+			cursor: pointer;
 		}
 	}
 }

@@ -3,6 +3,7 @@ import levelContext from './context/levelContext';
 import { elementScrollIntoView } from 'seamless-scroll-polyfill';
 import Modal from './Components/Modal';
 import soundFile from './assets/noir.mp3';
+import { FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
 
 function App() {
 	const {
@@ -22,6 +23,7 @@ function App() {
 	const [theNode, setTheNode] = useState();
 	const [show, setShow] = useState(true);
 	const [myAudio, setMyAudio] = useState();
+	const [playing, setPlaying] = useState(false);
 	const content = {
 		title: 'Play game audio',
 		body: 'Would you like game audio to play during your session?',
@@ -566,16 +568,25 @@ function App() {
 			myAudio.play();
 			myAudio.loop = true;
 		}
-		console.log('music ran');
 	}, [myAudio]);
 	const startAudio = () => {
-		const url = soundFile;
-		setMyAudio(new Audio(url));
+		if (myAudio === undefined) {
+			const url = soundFile;
+			setMyAudio(new Audio(url));
+		} else {
+			myAudio.play();
+		}
+		setPlaying(true);
 	};
 	const stopAudio = () => {
 		if (myAudio !== undefined) {
 			myAudio.pause();
 		}
+		setPlaying(false);
+	};
+	const toggleSound = () => {
+		playing ? stopAudio() : startAudio();
+		setPlaying(!playing);
 	};
 	const handleClose = (decision) => {
 		setShow(false);
@@ -661,7 +672,14 @@ function App() {
 					/>
 				</a>
 				<div>
-					<a href='https://jcodes.blog'>blog</a>
+					<button className='soundToggle' onClick={toggleSound}>
+						{playing ? (
+							<FaVolumeUp size={'2rem'} />
+						) : (
+							<FaVolumeMute size={'2rem'} />
+						)}{' '}
+						music
+					</button>
 				</div>
 			</header>
 			{textNode !== null && responses.length > 0 ? (
