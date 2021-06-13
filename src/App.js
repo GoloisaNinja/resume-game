@@ -12,6 +12,7 @@ function App() {
 		inventory,
 		responses,
 		decision,
+		records,
 		setLevelMood,
 		setLevelInventory,
 		setLevelNode,
@@ -19,17 +20,19 @@ function App() {
 		setDecision,
 		clearGameData,
 		clearResponses,
+		setRecords,
 	} = useContext(levelContext);
 	const [theNode, setTheNode] = useState();
 	const [show, setShow] = useState(true);
+	const [endGame, setEndGame] = useState(false);
 	const [myAudio, setMyAudio] = useState();
 	const [playing, setPlaying] = useState(false);
-	const content = {
+	const [content, setContent] = useState({
 		title: 'Play game audio',
 		body: 'Would you like game audio to play during your session?',
 		type: 'decision',
 		icon: '/assets/newspaper.png',
-	};
+	});
 	const textNodes = [
 		{
 			id: 1,
@@ -441,6 +444,7 @@ function App() {
 					nextText: 6,
 					inventory: 'TRU Record',
 					requires: null,
+					record: 'ToysRUs',
 				},
 			],
 		},
@@ -469,6 +473,7 @@ function App() {
 					nextText: 12,
 					inventory: 'Finance Record',
 					requires: null,
+					record: 'HSBC/Finance',
 				},
 			],
 		},
@@ -537,6 +542,7 @@ function App() {
 					find all the employment records? GAME OVER.`,
 					nextText: -1,
 					requires: null,
+					record: 'Lineage Logistics',
 				},
 			],
 		},
@@ -564,16 +570,21 @@ function App() {
 					inventory: 'Maines Record',
 					nextText: 19,
 					requires: null,
+					record: 'Maines',
 				},
 			],
 		},
 	];
+	// Game audio section - useEffect to play and loop
+
 	useEffect(() => {
 		if (myAudio !== undefined) {
 			myAudio.play();
 			myAudio.loop = true;
 		}
 	}, [myAudio]);
+
+	// Start game audio by setting state audio object to new audio and setting state playing to true
 	const startAudio = () => {
 		if (myAudio === undefined) {
 			const url = soundFile;
@@ -583,31 +594,63 @@ function App() {
 		}
 		setPlaying(true);
 	};
+	// Stop/Pause game audio when state audio is not undefined - set state playing to false
 	const stopAudio = () => {
 		if (myAudio !== undefined) {
 			myAudio.pause();
 		}
 		setPlaying(false);
 	};
+	// Creating a toggle here so player has control via a button I'll add to UI
 	const toggleSound = () => {
 		playing ? stopAudio() : startAudio();
 		setPlaying(!playing);
 	};
+	// Audio Modal HandleClose function at start of game to allow users to start audio at outset
 	const handleClose = (decision) => {
 		setShow(false);
 		if (decision) {
 			startAudio();
 		}
 	};
+	// Quikc function to check if user minimized tab on mobile or desktop - stopAudio called if true
 	const handleVisibilityChange = () => {
 		if (document.hidden) {
 			stopAudio();
 		}
 	};
 	document.addEventListener('visibilitychange', handleVisibilityChange, false);
+
+	// End Game Audio Section
+
+	// Display End Game Modal
+	const handleDismiss = () => {
+		setShow(false);
+		setEndGame(false);
+		startAdventureGame();
+	};
+
+	useEffect(() => {
+		if (endGame) {
+			setContent({
+				title: 'End Game Results',
+				body: records,
+				type: 'dismiss',
+				icon: '/assets/newspaper.png',
+			});
+			setShow(true);
+		}
+	}, [endGame]);
+
+	// Text Decision Game Logic - handles player choices and updates various states based on node route
+
 	const handleChoice = (option) => {
-		if (option.nextText === -1) {
-			return startAdventureGame();
+		if (option.nextText === -1 && !!option.record) {
+			setRecords(option.record);
+			return setEndGame(true);
+		}
+		if (!!option.record) {
+			setRecords(option.record);
 		}
 		if (!!option.mood) {
 			setLevelMood(option.mood);
@@ -622,10 +665,14 @@ function App() {
 		});
 	};
 
+	// Start function
 	const startAdventureGame = () => {
 		clearGameData();
 		setTheNode(1);
 	};
+
+	// Use Layout Effect to prevent component flashes on updates - sets new textnode and responses
+
 	useLayoutEffect(() => {
 		const showOption = (option) => {
 			let shouldShow = false;
@@ -664,6 +711,8 @@ function App() {
 	useLayoutEffect(() => {
 		startAdventureGame();
 	}, []);
+
+	// *******************************************
 
 	return (
 		<div className='App'>
@@ -745,7 +794,12 @@ function App() {
 					...
 				</div>
 			)}
-			<Modal show={show} handleClose={handleClose} content={content} />
+			<Modal
+				show={show}
+				handleClose={handleClose}
+				handleDismiss={handleDismiss}
+				content={content}
+			/>
 		</div>
 	);
 }

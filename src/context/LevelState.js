@@ -9,6 +9,7 @@ import {
 	CLEAR_RESPONSES,
 	SET_DECISION,
 	CLEAR_GAME_DATA,
+	UPDATE_RECORDS,
 } from './levelActions';
 
 const LevelState = ({ children }) => {
@@ -18,6 +19,12 @@ const LevelState = ({ children }) => {
 		inventory: [],
 		responses: [],
 		decision: '',
+		records: {
+			ToysRUs: false,
+			'HSBC/Finance': false,
+			Maines: false,
+			'Lineage Logistics': false,
+		},
 	};
 
 	const [state, dispatch] = useReducer(levelReducer, initialState);
@@ -65,6 +72,14 @@ const LevelState = ({ children }) => {
 			payload: decision,
 		});
 	};
+	// Set Records
+	const setRecords = (recordToUpdate) => {
+		dispatch({
+			type: UPDATE_RECORDS,
+			payload: recordToUpdate,
+		});
+	};
+	// Clear game data to initial state
 	const clearGameData = () => {
 		dispatch({
 			type: CLEAR_GAME_DATA,
@@ -78,6 +93,7 @@ const LevelState = ({ children }) => {
 				inventory: state.inventory,
 				responses: state.responses,
 				decision: state.decision,
+				records: state.records,
 				setLevelMood,
 				setLevelNode,
 				setLevelInventory,
@@ -85,6 +101,7 @@ const LevelState = ({ children }) => {
 				setDecision,
 				clearGameData,
 				clearResponses,
+				setRecords,
 			}}>
 			{children}
 		</LevelContext.Provider>

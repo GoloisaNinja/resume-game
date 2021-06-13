@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaCheck, FaTimes } from 'react-icons/fa';
 
 const Modal = ({ show, handleClose, handleDismiss, content }) => {
 	return (
@@ -10,7 +11,23 @@ const Modal = ({ show, handleClose, handleDismiss, content }) => {
 					</div>
 
 					<h2 style={{ marginBottom: '2rem' }}>{content.title}</h2>
-					<p style={{ marginBottom: '2rem' }}>{content.body}</p>
+					{content.type === 'dismiss' ? (
+						<ul className='records'>
+							{Object.entries(content.body).map((object, index) => (
+								<li className='record' key={index}>
+									{object[0]}:{' '}
+									{object[1] === true ? (
+										<FaCheck className='check' />
+									) : (
+										<FaTimes className='times' />
+									)}
+								</li>
+							))}
+						</ul>
+					) : (
+						<p style={{ marginBottom: '2rem' }}>{content.body}</p>
+					)}
+
 					<div className='buttonDiv'>
 						{content.type === 'decision' ? (
 							<>

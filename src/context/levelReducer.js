@@ -6,6 +6,7 @@ import {
 	CLEAR_RESPONSES,
 	SET_DECISION,
 	CLEAR_GAME_DATA,
+	UPDATE_RECORDS,
 } from './levelActions';
 
 const levelReducer = (state, action) => {
@@ -41,6 +42,11 @@ const levelReducer = (state, action) => {
 				...state,
 				decision: payload,
 			};
+		case UPDATE_RECORDS:
+			return {
+				...state,
+				records: { ...state.records, [payload]: true },
+			};
 		case CLEAR_GAME_DATA:
 			return {
 				textNode: null,
@@ -49,6 +55,12 @@ const levelReducer = (state, action) => {
 				choices: [],
 				responses: [],
 				decision: '',
+				records: {
+					ToysRUs: false,
+					'HSBC/Finance': false,
+					Maines: false,
+					'Lineage Logistics': false,
+				},
 			};
 		default:
 			return state;
