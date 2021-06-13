@@ -131,7 +131,7 @@ function App() {
 				},
 				{
 					text: `Marlow is dead. You've got a file at least. You should get back to your office before the cops show.`,
-					requires: { mood: 'neutral', inventory: 'File' },
+					requires: { mood: 'neutral', inventory: ['File'] },
 					nextText: 6,
 				},
 			],
@@ -180,7 +180,7 @@ function App() {
 					text: `The storage unit is sure to have some answers - it's time to find out what Marlow died for.`,
 					nextText: 19,
 					mood: 'determined',
-					requires: { inventory: 'Key' },
+					requires: { inventory: ['Key'] },
 				},
 			],
 		},
@@ -207,7 +207,7 @@ function App() {
 					nextText: 6,
 					mood: 'careful',
 					inventory: 'Key',
-					requires: { inventory: 'File' },
+					requires: { inventory: ['File'] },
 				},
 			],
 		},
@@ -233,7 +233,7 @@ function App() {
 					text: `The keypad has to be the way - entering the right keycode might disable the alarm.`,
 					nextText: 10,
 					mood: 'deliberate',
-					requires: { inventory: 'Secur-a-Doc Paper' },
+					requires: { inventory: ['Secur-a-Doc Paper'] },
 				},
 				{
 					text: `This is a dead end and the cops will be here any minute - best to go back to the office
@@ -246,7 +246,7 @@ function App() {
 					text: `Enough fooling around - it's time to check out this storage locker.`,
 					nextText: 19,
 					mood: 'exasperated',
-					requires: { inventory: 'Key' },
+					requires: { inventory: ['Key'] },
 				},
 			],
 		},
@@ -288,13 +288,13 @@ function App() {
 					text: `The Secur-a-Doc paper from the file has that weird word on it - try "SURSYOT"`,
 					nextText: 16,
 					mood: 'thoughtful',
-					requires: { inventory: 'Secur-a-Doc Paper' },
+					requires: { inventory: ['Secur-a-Doc Paper'] },
 				},
 				{
 					text: `The Secur-a-Doc paper from the file has that weird word on it but also a number - try "SURSYOT126"`,
 					nextText: 17,
 					mood: 'big brain',
-					requires: { inventory: 'Secur-a-Doc Paper' },
+					requires: { inventory: ['Secur-a-Doc Paper'] },
 				},
 			],
 		},
@@ -335,7 +335,7 @@ function App() {
 					text: `Enough is enough, it's time to go to this storage unit`,
 					nextText: 19,
 					inventory: 'Circuit Board',
-					requires: { inventory: 'Key' },
+					requires: { inventory: ['Key'] },
 				},
 				{
 					text: `I need to head out to Rook's place and find out what's really going on here.`,
@@ -392,7 +392,7 @@ function App() {
 				{
 					text: `You hand him the Secur-a-Doc Paper. Maybe that weird word is a password too?`,
 					nextText: 18,
-					requires: { inventory: 'Secur-a-Doc Paper' },
+					requires: { inventory: ['Secur-a-Doc Paper'] },
 				},
 			],
 		},
@@ -483,20 +483,25 @@ function App() {
 					text: `Unlock the padlock and open the door. Time to find out what secrets lay beyond.`,
 					nextText: 20,
 					mood: 'daring',
-					requires: null,
+					requires: { inventory: ['Key'] },
 				},
 				{
 					text: `That's the electrical box from the picture - probably best to hook up the circuit board before 
 					trying the lock.`,
 					nextText: 21,
 					mood: 'legend',
-					requires: { inventory: 'Circuit Board' },
+					requires: { inventory: ['Circuit Board', 'Key'] },
+				},
+				{
+					text: `Keys are overrated - bash the lock!`,
+					nextText: 20,
+					requires: null,
 				},
 			],
 		},
 		{
 			id: 20,
-			text: `Just as you begin to raise the door after unlocking the padlock, you hear the hot sizzle of the 
+			text: `Just as you begin to raise the door after dealing with the padlock, you hear the hot sizzle of the 
 			large electrical box next to the door. It occurs to you that someone must have rigged the door as 
 			some kind booby trap. The electrical box explodes and sends an untold number of volts and amps through
 			your body. You are thrown nearly 20 feet backwards into the door of another unit. The rain helps
@@ -632,7 +637,8 @@ function App() {
 			}
 			if (
 				!!option.requires?.inventory &&
-				inventory.includes(option.requires?.inventory)
+				option.requires?.inventory.every((item) => inventory.includes(item))
+				//inventory.includes(option.requires?.inventory)
 			) {
 				shouldShow = true;
 			}

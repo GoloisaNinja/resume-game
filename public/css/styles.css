@@ -119,7 +119,8 @@ body {
   border: 3px solid #ebebeb;
   border-radius: 5px;
   padding: 1rem;
-  cursor: pointer; }
+  cursor: pointer;
+  width: 100%; }
 
 .white-span {
   color: #ebebeb; }
