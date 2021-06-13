@@ -165,13 +165,13 @@ body {
 
 .modalButton1, .modalButton2, .modalDismissButton1 {
   background-color: #030303;
-  color: #ce0000;
+  color: #ff0000;
   padding: 1rem;
   border: none;
   border-radius: 3px;
-  width: 95px;
+  width: 110px;
   max-width: 100%;
-  border: 3px solid #ce0000;
+  border: 3px solid #ff0a0a;
   font-weight: 700;
   cursor: pointer;
   font-family: 'Press Start 2P', cursive;

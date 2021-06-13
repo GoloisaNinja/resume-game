@@ -645,8 +645,10 @@ function App() {
 	// Text Decision Game Logic - handles player choices and updates various states based on node route
 
 	const handleChoice = (option) => {
-		if (option.nextText === -1 && !!option.record) {
-			setRecords(option.record);
+		if (option.nextText === -1) {
+			if (!!option.record) {
+				setRecords(option.record);
+			}
 			return setEndGame(true);
 		}
 		if (!!option.record) {
