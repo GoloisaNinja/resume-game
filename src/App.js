@@ -2,6 +2,7 @@ import React, { useContext, useLayoutEffect, useState, useEffect } from 'react';
 import levelContext from './context/levelContext';
 import { elementScrollIntoView } from 'seamless-scroll-polyfill';
 import Modal from './Components/Modal';
+import Footer from './Components/Footer';
 import soundFile from './assets/noir.mp3';
 import { FaVolumeMute, FaVolumeUp } from 'react-icons/fa';
 
@@ -784,6 +785,7 @@ function App() {
 								})}
 						</div>
 					</main>
+					<Footer />
 				</>
 			) : (
 				<div
