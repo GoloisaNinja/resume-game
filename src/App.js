@@ -529,7 +529,7 @@ function App() {
 			almost expecting it explode. The caller ID lists the number as "Unknown". You hit answer. "Hello 
 			there Private Investigator. I'm the man you were hired to find, my name is Jonathan Collins. I think 
 			by now you've realized your "friend" Marlow was anything but. He's been trying to track me down for 
-			some time. He wants to hire me for some kind of job. I've been a System Admin and developer at a 
+			some time. He wants to hire me for some kind of job. I started as a System Admin, and was promoted to Developer at a 
 			global logistics company called Lineage Logistics since 2020, and honestly, I only like to work for 
 			the heroes, not the villians.  So I've been trying to hide my past as much as possible from Marlow. 
 			You've uncovered a lot about me tonight, but there's so much more. But for now, you need to run. 
