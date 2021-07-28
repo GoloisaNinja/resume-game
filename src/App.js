@@ -128,15 +128,15 @@ function App() {
 					requires: null,
 				},
 				{
+					text: `Marlow is dead. You've got a file at least. You should get back to your office before the cops show.`,
+					requires: { mood: 'neutral', inventory: ['File'] },
+					nextText: 6,
+				},
+				{
 					text: `The cops will be here any minute - but Marlow was reaching for something wasn't he?`,
 					mood: 'shook',
 					nextText: 7,
 					requires: null,
-				},
-				{
-					text: `Marlow is dead. You've got a file at least. You should get back to your office before the cops show.`,
-					requires: { mood: 'neutral', inventory: ['File'] },
-					nextText: 6,
 				},
 			],
 		},
@@ -167,11 +167,10 @@ function App() {
 			card is downtown. There's something written on the back. "Simulare".`,
 			options: [
 				{
-					text: `Secur-a-Doc is like a bank for records - you've always wanted to rob a bank.`,
-					nextText: 8,
-					mood: 'aggresive',
-					inventory: 'Secur-a-Doc Paper',
-					requires: null,
+					text: `The storage unit is sure to have some answers - it's time to find out what Marlow died for.`,
+					nextText: 19,
+					mood: 'determined',
+					requires: { inventory: ['Key'] },
 				},
 				{
 					text: `FPD is a total mystery - and total mysteries intrigue you.`,
@@ -181,10 +180,11 @@ function App() {
 					requires: null,
 				},
 				{
-					text: `The storage unit is sure to have some answers - it's time to find out what Marlow died for.`,
-					nextText: 19,
-					mood: 'determined',
-					requires: { inventory: ['Key'] },
+					text: `Secur-a-Doc is like a bank for records - you've always wanted to rob a bank.`,
+					nextText: 8,
+					mood: 'aggresive',
+					inventory: 'Secur-a-Doc Paper',
+					requires: null,
 				},
 			],
 		},
@@ -283,16 +283,16 @@ function App() {
 			have much time before the cops are going to rain on your already rainy parade.  Think! THINK!`,
 			options: [
 				{
-					text: `Try "Password"`,
-					nextText: 16,
-					mood: 'ridiculous',
-					requires: null,
-				},
-				{
 					text: `The Secur-a-Doc paper from the file has that weird word on it - try "SURSYOT"`,
 					nextText: 16,
 					mood: 'thoughtful',
 					requires: { inventory: ['Secur-a-Doc Paper'] },
+				},
+				{
+					text: `Try "Password"`,
+					nextText: 16,
+					mood: 'ridiculous',
+					requires: null,
 				},
 				{
 					text: `The Secur-a-Doc paper from the file has that weird word on it but also a number - try "SURSYOT126"`,
@@ -383,6 +383,11 @@ function App() {
 			man holds out his hand expectantly.`,
 			options: [
 				{
+					text: `You hand him the Secur-a-Doc Paper. Maybe that weird word is a password too?`,
+					nextText: 18,
+					requires: { inventory: ['Secur-a-Doc Paper'] },
+				},
+				{
 					text: `You grab the large man's hand and do the "Super Snap Double Pump Explode" - a secret handshake
 					you invented in middle school.`,
 					nextText: 15,
@@ -392,11 +397,6 @@ function App() {
 					text: `You hand him the FPD LLC card. Maybe that writing on the back is a password too?`,
 					nextText: 15,
 					requires: null,
-				},
-				{
-					text: `You hand him the Secur-a-Doc Paper. Maybe that weird word is a password too?`,
-					nextText: 18,
-					requires: { inventory: ['Secur-a-Doc Paper'] },
 				},
 			],
 		},
