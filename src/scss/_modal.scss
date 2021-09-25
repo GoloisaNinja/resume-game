@@ -21,11 +21,28 @@
 }
 .check,
 .times {
-	font-size: 2rem;
+	font-size: 3rem;
 	color: #5afb10;
+	vertical-align: baseline;
+	margin-top: 7px;
 }
 .times {
 	color: rgb(206, 0, 0);
+}
+.record-result-pass {
+	border: 2px solid #5afb10;
+	background-color: #030303;
+	color: #5afb10;
+	padding: 5px;
+	text-align: center;
+}
+.record-result-fail {
+	border: 2px solid rgb(206, 0, 0);
+	background-color: #030303;
+	color: rgb(206, 0, 0);
+	padding: 5px 8px;
+	text-align: center;
+	margin-top: 5px;
 }
 .modalOverlay {
 	z-index: 1000;

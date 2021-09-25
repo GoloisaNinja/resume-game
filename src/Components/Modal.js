@@ -17,9 +17,15 @@ const Modal = ({ show, handleClose, handleDismiss, content }) => {
 								<li className='record' key={index}>
 									{object[0]}:{' '}
 									{object[1] === true ? (
-										<FaCheck className='check' />
+										<>
+											<FaCheck className='check' />{' '}
+											<span className='record-result-pass'>ACQUIRED</span>
+										</>
 									) : (
-										<FaTimes className='times' />
+										<>
+											<FaTimes className='times' />{' '}
+											<span className='record-result-fail'>FAILED</span>
+										</>
 									)}
 								</li>
 							))}

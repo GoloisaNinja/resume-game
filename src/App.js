@@ -24,6 +24,7 @@ function App() {
 		setRecords,
 	} = useContext(levelContext);
 	const [theNode, setTheNode] = useState();
+	const [btnDisabled, setBtnDisabled] = useState(false);
 	const [show, setShow] = useState(true);
 	const [endGame, setEndGame] = useState(false);
 	const [myAudio, setMyAudio] = useState();
@@ -178,6 +179,7 @@ function App() {
 					mood: 'inquisitive',
 					inventory: 'Business Card',
 					requires: null,
+					disabled: { inventory: ['Finance Record'] },
 				},
 				{
 					text: `Secur-a-Doc is like a bank for records - you've always wanted to rob a bank.`,
@@ -185,6 +187,7 @@ function App() {
 					mood: 'aggresive',
 					inventory: 'Secur-a-Doc Paper',
 					requires: null,
+					disabled: { inventory: ['TRU Record'] },
 				},
 			],
 		},
@@ -543,7 +546,7 @@ function App() {
 					find all the employment records? GAME OVER.`,
 					nextText: -1,
 					requires: null,
-					record: 'Lineage Logistics',
+					record: 'Lineage',
 				},
 			],
 		},
@@ -646,31 +649,36 @@ function App() {
 	// Text Decision Game Logic - handles player choices and updates various states based on node route
 
 	const handleChoice = (option) => {
-		if (option.nextText === -1) {
-			if (!!option.record) {
-				setRecords(option.record);
-			}
-			return setEndGame(true);
-		}
-		if (!!option.record) {
-			setRecords(option.record);
-		}
-		if (!!option.mood) {
-			setLevelMood(option.mood);
-		}
-		if (!!option.inventory && !inventory.includes(option.inventory)) {
-			setLevelInventory(option.inventory);
-		}
-		setDecision(option.text);
-		setTheNode(option.nextText);
+		setBtnDisabled(true);
 		elementScrollIntoView(document.getElementById('scrollTarget'), {
 			behavior: 'smooth',
 		});
+		setTimeout(() => {
+			if (option.nextText === -1) {
+				if (!!option.record) {
+					setRecords(option.record);
+				}
+				return setEndGame(true);
+			}
+			if (!!option.record) {
+				setRecords(option.record);
+			}
+			if (!!option.mood) {
+				setLevelMood(option.mood);
+			}
+			if (!!option.inventory && !inventory.includes(option.inventory)) {
+				setLevelInventory(option.inventory);
+			}
+			setDecision(option.text);
+			setTheNode(option.nextText);
+			setBtnDisabled(false);
+		}, 800);
 	};
 
 	// Start function
 	const startAdventureGame = () => {
 		clearGameData();
+		setBtnDisabled(false);
 		setTheNode(1);
 	};
 
@@ -691,6 +699,12 @@ function App() {
 				//inventory.includes(option.requires?.inventory)
 			) {
 				shouldShow = true;
+			}
+			if (
+				!!option.disabled?.inventory &&
+				option.disabled.inventory.every((item) => inventory.includes(item))
+			) {
+				shouldShow = false;
 			}
 			return shouldShow;
 		};
@@ -732,9 +746,9 @@ function App() {
 				<div>
 					<button className='soundToggle' onClick={toggleSound}>
 						{playing ? (
-							<FaVolumeUp size={'2.4rem'} />
+							<FaVolumeUp size={'24px'} />
 						) : (
-							<FaVolumeMute size={'2.4rem'} />
+							<FaVolumeMute size={'24px'} />
 						)}{' '}
 						sound
 					</button>
@@ -777,6 +791,7 @@ function App() {
 									return (
 										<button
 											key={Math.random()}
+											disabled={btnDisabled}
 											className='btn adentureChoice'
 											onClick={(e) => handleChoice(option)}>
 											{option.text}

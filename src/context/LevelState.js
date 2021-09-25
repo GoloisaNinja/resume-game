@@ -23,7 +23,7 @@ const LevelState = ({ children }) => {
 			ToysRUs: false,
 			'HSBC/Finance': false,
 			Maines: false,
-			'Lineage Logistics': false,
+			Lineage: false,
 		},
 	};
 

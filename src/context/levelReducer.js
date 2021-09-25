@@ -59,7 +59,7 @@ const levelReducer = (state, action) => {
 					ToysRUs: false,
 					'HSBC/Finance': false,
 					Maines: false,
-					'Lineage Logistics': false,
+					Lineage: false,
 				},
 			};
 		default:

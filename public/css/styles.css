@@ -121,6 +121,9 @@ body {
   padding: 1rem;
   cursor: pointer;
   width: 100%; }
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed; }
 
 .white-span {
   color: #ebebeb; }
@@ -147,11 +150,28 @@ body {
 
 .check,
 .times {
-  font-size: 2rem;
-  color: #5afb10; }
+  font-size: 3rem;
+  color: #5afb10;
+  vertical-align: baseline;
+  margin-top: 7px; }
 
 .times {
   color: #ce0000; }
+
+.record-result-pass {
+  border: 2px solid #5afb10;
+  background-color: #030303;
+  color: #5afb10;
+  padding: 5px;
+  text-align: center; }
+
+.record-result-fail {
+  border: 2px solid #ce0000;
+  background-color: #030303;
+  color: #ce0000;
+  padding: 5px 8px;
+  text-align: center;
+  margin-top: 5px; }
 
 .modalOverlay {
   z-index: 1000;
