@@ -334,18 +334,17 @@ function App() {
 			for you! You're the PI right? Guy said you'd be here. Literally right here. Said you'd be in shock too. 
 			Kinda creepy how right he was. Anyway, here you go!" He hands you a small box and rides away. Now you are
 			in an even deeper state of disbelief. You open the box in the pouring rain. There's a plastic bag with 
-			a small circuit board inside, and a picture of the circuit board hooked into an electrical box beside 
-			a storage unit door marked 126. The logo on the door is Lou Lou's Storage. There's one more thing 
-			in the box.  It's a chess piece. It's a Rook.`,
+			a small circuit board inside, and a picture of the how circuit board hooks into some kind of electrical panel.  
+			There's one last thing in the box.  It's a chess piece...`,
 			options: [
 				{
 					text: `Enough is enough, it's time to go to this storage unit`,
 					nextText: 19,
 					inventory: 'Circuit Board',
-					requires: { inventory: ['Key'] },
+					requires: null,
 				},
 				{
-					text: `I need to head out to Rook's place and find out what's really going on here.`,
+					text: `Marlow talked about the Rook earlier - but checking the car shop might just be checkmate`,
 					nextText: 22,
 					inventory: 'Circuit Board',
 					requires: null,
@@ -484,19 +483,19 @@ function App() {
 		{
 			id: 19,
 			text: `Lou Lou's Storage looms out of the rainy darkness like a glowing, hot pink, oasis. This time of 
-			night the place is completely empty save for the giant pink neon sign. You approach unit 126. You fish 
-			the unit key from your pocket. There's a large electrical box next to the door, and the door has a thick 
-			padlock attached to it.`,
+			night the place is completely empty save for the giant pink neon sign. You approach unit 126. You take a
+			quick look around. It's a pretty nondescript storage unit. There's 
+			a large electrical box on the wall next to the door, probably supplies electricity for the lights inside. 
+			It's the kind of box panel with a lock.  The door, a simple, metal shutter style, is secured by a thick padlock attached to a stationary apron on the wall.`,
 			options: [
 				{
-					text: `Unlock the padlock and open the door. Time to find out what secrets lay beyond.`,
+					text: `The key might unlock the padlock and open the door. Time to find out what secrets lay beyond.`,
 					nextText: 20,
 					mood: 'daring',
 					requires: { inventory: ['Key'] },
 				},
 				{
-					text: `That's the electrical box from the picture - probably best to hook up the circuit board before 
-					trying the lock.`,
+					text: `The key might unlock the electrical box.`,
 					nextText: 21,
 					mood: 'legend',
 					requires: { inventory: ['Circuit Board', 'Key'] },
@@ -525,16 +524,20 @@ function App() {
 		},
 		{
 			id: 21,
-			text: `You carefully attach circuit board in the same way as the picture indicates. Once it's hooked up,
-			a light on the board goes green. You bend down and unlock the massive padlock.  As you open the door to 
+			text: `You decide to unlock the electrical box. The inside looks very familiar.  Removing the circuit diagram
+			from your pocket, you realize, it's a perfect match!  You should be able to attach that circuit board you got 
+			just like the in the picture! Once it's hooked up,
+			a light on the board goes green and you can hear the distinct sound of like something on the inside of the storage
+			unit shutting down. You bend down hoping the key will also unlock the massive padlock.  It does!  As you open the door to 
 			the unit a flourescent bulb flickers to life inside the unit. The unit is completely empty, but for a 
 			small cell phone in the center of the unit. It rings the moment you see it.  You approach gingerly, 
 			almost expecting it explode. The caller ID lists the number as "Unknown". You hit answer. "Hello 
 			there Private Investigator. I'm the man you were hired to find, my name is Jonathan Collins. I think 
 			by now you've realized your "friend" Marlow was anything but. He's been trying to track me down for 
 			some time. He wants to hire me for some kind of job. I started as a System Admin, and was promoted to Developer at a 
-			global logistics company called Lineage Logistics since 2020, and honestly, I only like to work for 
-			the heroes, not the villians.  So I've been trying to hide my past as much as possible from Marlow. 
+			global logistics company called Lineage since 2020.  I'm not sure what his offer is, but I only like to work for 
+			the heroes, not the villians.  So I've been trying to hide my past as much as possible from Marlow, hence the 
+			scattering of all my employment records. 
 			You've uncovered a lot about me tonight, but there's so much more. But for now, you need to run. 
 			Marlow is still out there, and he'll be hunting both of us now. Don't worry, I'll leave you some 
 			more clues. I know you like to follow things through till the end, I'm the same way.  Be talking to
